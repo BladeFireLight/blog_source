@@ -1,0 +1,20 @@
+---
+---
+
+/* BladeFireLight.com */
+	Author:  David Jones
+	Twitter: @BladeFireLight
+
+/* Thanks */
+
+  OriginalDesigner:     Michael Rose
+  Twitter:              @mmistakes
+  Location:             Buffalo, New York USA
+
+/* About Site */  
+  Last updated:         {{ site.time }}
+  Language:             English
+  Built with:           Jekyll {{ jekyll.version }} <http://jekyllrb.com>
+                        Notepad++ <https://notepad-plus-plus.org/>
+                        Grunt <http://gruntjs.com>
+                        Twitter Emoji <https://github.com/twitter/twemoji>
