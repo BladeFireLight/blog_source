@@ -44,7 +44,7 @@ owner:
   yandex:
     verify: 
   bio: "Husband, Father IT Pro. PowerShell enthusiest"
-  avatar: bio-photo.jpg # 160x160 px image for author byline
+  avatar: avatar1.jpg # 160x160 px image for author byline
 disqus-shortname: blogbladefirelightcom
 
 
@@ -104,12 +104,24 @@ collections:
 
 defaults:
 
-  # Blog Posts
+  # All Posts
   - scope:
-      path: _posts/articles
+      path: _posts
       type: posts
     values:
-      layout: article
+      image:
+        feature: sample-image-1.jpg
+        teaser: sample-image-1.jpg
+        thumb: sample-image-1.jpg
+
+
+
+  # Blog Posts
+  - scope:
+      path: _posts/posts
+      type: posts
+    values:
+      layout: post
       category: posts
       comments: true
       image:
@@ -123,7 +135,7 @@ defaults:
       path: _posts/projects
       type: posts
     values:
-      layout: article
+      layout: post
       category: projects
       comments: true
 
@@ -132,7 +144,7 @@ defaults:
       path: _posts/nuggets
       type: posts
     values:
-      layout: article
+      layout: post
       category: nuggets
       comments: true
 
@@ -141,7 +153,7 @@ defaults:
       path: _faqs
       type: faqs
     values:
-      layout: article
+      layout: post
       comments: true
 
   # Pages
@@ -149,7 +161,7 @@ defaults:
       path: _pages
       type: pages
     values:
-      layout: article
+      layout: post
 
 port:    4000
 

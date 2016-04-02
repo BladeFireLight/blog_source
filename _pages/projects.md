@@ -3,7 +3,7 @@ layout: archive
 permalink: /projects/
 title: "PowerShell Projects"
 date: 2016-03-01T15:05:16-04:00
-excerpt: "A selection of scripts and modules I have developed."
+excerpt: "A selection of scripts and modules I have worked on."
 ads: false
 tiles: false
 feature:
@@ -13,12 +13,13 @@ feature:
 ---
 
 {{ page.excerpt | markdownify }}
-## Proj1
+## WindowsImageTools
 {% for post in site.categories.projects %}
-  {% if post.categories contains  'proj1' %}
+  {% if post.categories contains  'WindowsImageTools' %}
   {% include archive__item.html %}
   {% endif %}
 {% endfor %}
+<!-- 
 ## Proj2
 {% for post in site.categories.projects %}
   {% if post.categories contains  'proj2' %}
@@ -31,3 +32,4 @@ feature:
   {% include archive__item.html %}
   {% endif %}
 {% endfor %}
+-->
