@@ -17,4 +17,4 @@ group :jekyll_plugins do
 end
 gem "jekyll-gist"
 gem "octopress"
-gem 'jekyll_github_sample' , '0.1.1', :path => 'E:\Blog\setup\jekyll-github-sample'
+gem 'jekyll_github_sample' , '0.1.1', :path => '/mnt/e/Blog/setup/jekyll-github-sample'

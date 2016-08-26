@@ -110,7 +110,7 @@ end
 desc "Commit the contents of ./_site to GitHub"
 task :commit do
   puts "* Commit : Adding changes in ./_site to repo"
-  system "git -C _site add ."
+  system "git -C _site add -A"
   puts "* Commit : Committing the contents of ./_site "
   system 'git -C _site commit -a -m "Automated Commit : Content Update"'
   puts "* Commit : Pushing commit of ./_site to the GitHub"

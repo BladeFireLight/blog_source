@@ -54,7 +54,7 @@ Functions cover three different areas, Creating VHDX, Manipulating them, and Upd
    * New-WindowsImageToolsExample
      * Creates an example folder structure and example controller scripts
    * Get-UpdateConfig
-     * Gets the update configuration stored in the update folders. Contains VM Switch, and IP addresses needed to access the internet when running udpates.
+     * Gets the update configuration stored in the update folders. Contains VM Switch, and IP addresses needed to access the internet when running updates.
    * Set-UpdateConfig
      * Change settings in the update configuration
    * Add-UpdateImage
@@ -66,4 +66,4 @@ Functions cover three different areas, Creating VHDX, Manipulating them, and Upd
 
 [^GPT]: GUID Partition Table. Used for Generation 2 and UEFI. will contain MSR, UEFI and Primary partition, may include options Recovery Tools and Recovery Image partitions
 
-[^MBR]: Master Boot Record. Used for Generation 1 and Lagacy BIOS. Will use one Primary partition
+[^MBR]: Master Boot Record. Used for Generation 1 and legacy BIOS. Will use one Primary partition
