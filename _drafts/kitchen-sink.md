@@ -1,7 +1,7 @@
 ---
-layout: article
+layout: post
 title: "Kitchen Sink Post"
-categories: articles
+categories: archive
 excerpt: "Below is just about everything you'll need to style in the theme."
 modified: 
 tags: [sample]
@@ -162,6 +162,11 @@ Set a block of text off from the rest.
 #### Success Notice
 `.notice--success` Maecenas ornare tortor. Donec sed tellus eget [sapien fringilla]() nonummy. Mauris a ante. Suspendisse quam sem, consequat at.
 </div>
+
+### test 
+{: .notice--success }
+test
+{: .notice--success }
 
 ## Fieldsets and Form Elements
 

@@ -34,9 +34,9 @@ Functions cover three different areas, Creating VHDX, Manipulating them, and Upd
 
 ### Create VHDX
    * Initialize-VHDPartition
-     * Create a VHD(x) with the partitions structure appropriate for the target generation of a VM 
+     * Create a VHD(x) with the partitions structure appropriate for the target generation of a VM
    * Set-VHDPartition
-     * Populate the VHD(x) partitions with the content of an ISO or WIM 
+     * Populate the VHD(x) partitions with the content of an ISO or WIM
    * Convert-Wim2VHD
      * Wrapper combining Initialize-VHDPartition and Set-VHDPartition in a single function
    * New-UnattendXml

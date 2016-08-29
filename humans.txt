@@ -18,3 +18,4 @@
                         Notepad++ <https://notepad-plus-plus.org/>
                         Grunt <http://gruntjs.com>
                         Twitter Emoji <https://github.com/twitter/twemoji>
+                        Visual Studio Code <https://code.visualstudio.com>
