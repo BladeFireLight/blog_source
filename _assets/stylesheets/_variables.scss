@@ -14,8 +14,7 @@ $monospace                    : Monaco, Consolas, "Lucida Console", monospace;
 $doc-font-size                : 16;
 $doc-line-height              : 24;
 $border-radius                : 4px;
-$code-font: Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
-
+$code-font                    : Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
 
 /*
    Color variables
@@ -105,7 +104,7 @@ $form-font-size               : $doc-font-size + 0px;
    Code snippet variables
    ========================================================================== */
 
-$code-background              : mix($white, $border-color, 75%);
+$code-background              : #002b36;
 $code-border-color            : $border-color;
 $code-border-color-hover      : mix($black, $border-color, 10%);
 $code-border-radius           : $border-radius;
@@ -114,12 +113,8 @@ $inline-code-background       : mix($white, $border-color, 75%);
 
 
 /*
-   Breakpoint variables
+   Screen sizes
    ========================================================================== */
-
-   /*
- $breakpoint-to-ems            : true;
-*/
 
 $small                        : 600px;
 $medium                       : 768px;
@@ -135,3 +130,10 @@ $x-large                      : 1440px;
 $sitemap-primary-color        : mix($white, $primary-color, 60%);
 $sitemap-sub-color            : mix($white, $primary-color, 80%);
 $sitemap-sub-sub-color        : mix($white, $primary-color, 90%);
+
+
+/*
+   Animation
+   ========================================================================== */
+
+$global-transition            : all 0.2s ease-in-out
