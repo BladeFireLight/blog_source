@@ -33,7 +33,7 @@ figure.highlight {
   overflow-x: auto;
 
   .highlight {
-    padding: 1em;
+   padding: 0.4em;
   }
 }
 
@@ -41,7 +41,7 @@ figure.highlight {
   margin: 0;
   color: #93a1a1;
   overflow-x: auto;
-
+padding: 0 0.4em;
   @media (min-width: $small) and (max-width: $medium-wide) {
     width: 550px;
   }
