@@ -1,20 +1,28 @@
-# Made Mistakes Gemfile
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'breakpoint'
-gem 'wdm', '~> 0.1.0' if Gem.win_platform?
-gem 'mini_magick'
-gem 'autoprefixer-rails'
-gem 'uglifier'
+# Hello! This is where you manage which Jekyll version is used to run.
+# When you want to use a different version, change it below, save the
+# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
+#
+#     bundle exec jekyll serve
+#
+# This will help ensure the proper Jekyll version is running.
+# Happy Jekylling!
 
-# Jekyll
-gem 'jekyll'
-gem 'jekyll-archives'
-gem 'jekyll-tagging-related_posts'
+# gem "github-pages", group: :jekyll_plugins
+
+# To upgrade, run `bundle update`.
+
+gem "jekyll", "~> 3.3.0"
+#gem "minimal-mistakes-jekyll"
+
+# If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem 'jekyll-assets', github: 'jekyll/jekyll-assets'
-  gem 'jekyll-sitemap', github: 'jekyll/jekyll-sitemap'
+  gem "jekyll-paginate"
+  gem "jekyll-sitemap"
+  gem "jekyll-gist"
+  gem "jekyll-feed"
+  gem "jemoji"
+  gem 'jekyll-archives'
+  gem 'jekyll-compose'
 end
-gem "jekyll-gist"
-gem "octopress"
-gem 'jekyll_github_sample' , '0.1.1', :path => '/mnt/e/Blog/setup/jekyll-github-sample'

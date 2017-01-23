@@ -2,45 +2,23 @@
 layout: default
 ---
 
-{% include masthead.html %}
-{% include browser-upgrade.html %}
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% endif %}
+
+{% if page.url != "/" and site.breadcrumbs %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
 
 <div id="main" role="main">
+  {% include sidebar.html %}
 
-  <header class="container post__header">
-    <h1 class="post__title">{{ page.title }}</h1>
-    {% if page.subtitle %}<h2 class="post__excerpt">{{ page.subtitle | markdownify | remove: "<p>" | remove: "</p>" }}</h2>{% endif %}
-    {% include page__hero.html %}
-    {% include breadcrumbs.html %}
-  </header>
-
-  {% if page.feature.visible == true %}
-    {% include featured.html %}
-  {% endif %}
-
-  <div class="container post__content">
-
-    {% unless page.fullwidth == true %}<div class="post__inner-wrapper">{% endunless %}
-
-      <section class="post__body">
-        {{ content }}
-      </section>
-
-    {% unless page.fullwidth == true %}</div>
-
-    <aside class="post__sidebar sticky">
-      <div class="toc--sidebar"></div>
-      {% include ad.html %}
-    </aside>
-
+  <div class="archive">
+    {% unless page.header.overlay_color or page.header.overlay_image %}
+      <h1 class="page__title">{{ page.title }}</h1>
     {% endunless %}
-
+    {{ content }}
   </div>
-
-  {% if page.tiles == true %}
-    {% include archive__tiles.html %}
-  {% endif %}
-
 </div>
-
-{% include colophon.html %}

@@ -11,7 +11,7 @@
   Twitter:              @mmistakes
   Location:             Buffalo, New York USA
 
-/* About Site */  
+/* About Site */
   Last updated:         {{ site.time }}
   Language:             English
   Built with:           Jekyll {{ jekyll.version }} <http://jekyllrb.com>

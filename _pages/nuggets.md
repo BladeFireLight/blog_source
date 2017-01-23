@@ -12,7 +12,5 @@ feature:
 ---
 
 {% for post in site.categories.nuggets %}
-  {% if post.featured != true %}
-  {% include archive__item.html %}
-  {% endif %}
+  {% include archive-single.html %}
 {% endfor %}
