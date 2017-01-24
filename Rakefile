@@ -1,3 +1,6 @@
+require 'time'
+require 'rake'
+require 'yaml'
 ##############
 # Jekyll tasks
 ##############
@@ -6,25 +9,20 @@
 task :serve => ["serve:dev"]
 namespace :serve do
 
-  desc "Serve development Jekyll site locally"
+  desc "Serve Jekyll site locally"
   task :dev do
-    puts "Starting up development Jekyll site server..."
-    system "bundle exec jekyll serve --no-watch " # --config _config.yml,_config.dev.yml"
+    puts "Starting up Jekyll site server..."
+    system "bundle exec jekyll serve --no-watch "
   end
-  desc "Serve development Jekyll site locally and watch for changes"
+  desc "Serve Jekyll site locally and watch for changes"
   task :watch do
-    puts "Starting up development Jekyll site server..."
-    system "bundle exec jekyll serve --config _config.yml" #,_config.dev.yml"
-  end
-  desc "Serve production Jekyll site locally"
-  task :prod do
-    puts "Starting up production Jekyll site server..."
-    system "bundle exec jekyll serve --no-watch"
+    puts "Starting up Jekyll site server..."
+    system "bundle exec jekyll serve "
   end
   desc "Regenerate files and drafts for development"
   task :drafts do
     puts "* Regenerating files and drafts for development..."
-    system "bundle exec jekyll serve --no-watch --profile --drafts " #--config _config.yml,_config.dev.yml "
+    system "bundle exec jekyll serve --no-watch --profile --drafts "
   end
 end
 
@@ -34,26 +32,20 @@ namespace :build do
 
   desc "Regenerate files for production"
   task :prod do
-    puts "* Regenerating files for production..."
+    puts "* Regenerating files..."
     system "JEKYLL_ENV=production; bundle exec jekyll build"
   end
 
   desc "Regenerate files for production (Windows systems)"
   task :win do
-    puts "* Regenerating files for production..."
+    puts "* Regenerating files..."
     system "bundle exec jekyll build"
   end
 
-  desc "Regenerate files for development"
-  task :dev do
-    puts "* Regenerating files for development..."
-    system "bundle exec jekyll build --config _config.yml,_config.dev.yml --profile"
-  end
-
-  desc "Regenerate files and drafts for development"
+  desc "Regenerate files and drafts"
   task :drafts do
-    puts "* Regenerating files and drafts for development..."
-    system "bundle exec jekyll build --config _config.yml,_config.dev.yml --profile --drafts"
+    puts "* Regenerating files and drafts..."
+    system "bundle exec jekyll build --profile --drafts"
   end
 end
 
@@ -128,5 +120,34 @@ namespace :deploy do
   desc "Regenerate and commit production files and notify services of the update (Windows systems)"
   #task :win => ["build:win", "commit", "notify"] do
   task :win => ["build:win", "commit" ] do
+  end
+end
+
+####################
+# New Post
+###################
+desc 'create a new draft post'
+task :post do
+  title = ENV['TITLE']
+  slug = "#{Date.today}-#{title.downcase.gsub(/[^\w]+/, '-')}"
+
+  file = File.join(
+    File.dirname(__FILE__),
+    '_posts',
+    slug + '.markdown'
+  )
+
+  File.open(file, "w") do |f|
+    f << <<-EOS.gsub(/^    /, '')
+    ---
+    title: #{title}
+    modified:
+    published: false
+    categories:
+    tags:
+    excerpt:
+    ---
+
+    EOS
   end
 end
