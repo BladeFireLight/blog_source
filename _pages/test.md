@@ -8,7 +8,7 @@ layout: default
 
 # Test Page
 
-<form method="POST" action="https://api.staticman.net/v2/entry/bladefirelight/blog_source/master/comments">
+<form method="POST" action="https://api.staticman.net/v2/entry/BladeFireLight/blog_source/master/comments">
  <!--  <input name="options[redirect]" type="hidden" value="https://my-site.com"> -->
   <input name="options[origin]" type="hidden" value="{{ page.url | absolute_url }}">
   <!-- e.g. "2016-01-02-this-is-a-post" -->
