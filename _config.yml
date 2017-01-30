@@ -18,7 +18,7 @@ teaser                   : "/assets/images/default-teaser.png" # path of fallbac
 breadcrumbs              : true # false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "staticman" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
     shortname            : "blogbladefirelightcom" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -167,7 +167,7 @@ kramdown:
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # expanded #  http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: expanded # compressed #   http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
 # Outputting

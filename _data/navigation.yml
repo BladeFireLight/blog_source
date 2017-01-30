@@ -3,7 +3,7 @@ main:
   - title: "About"
     url: /about/
   - title: "Nuggets"
-    url: /Nuggets/
+    url: /nuggets/
   - title: "Windows Image Tools"
     url: /windowsimagetools/
   - title: "PKI Tools"
