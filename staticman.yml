@@ -1,5 +1,6 @@
 comments:
   allowedFields     : ['name', 'email', 'url', 'message']
+  allowedOrigins    : ["localhost", "blog.bladefirelight.com"]
   branch            : "master"
   commitMessage     : "New comment."
   filename          : "comment-{@timestamp}"
