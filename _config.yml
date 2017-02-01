@@ -28,6 +28,7 @@ comments:
     appid                :
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
+staticmanUrl             : "https://api.staticman.net/v2/entry/BladeFireLight/blog_source/master/comments"
 #staticman:
 #  allowedFields          : ['name', 'email', 'url', 'message']
 #  allowedOrigins         : ["localhost", "blog.bladefirelight.com"]
