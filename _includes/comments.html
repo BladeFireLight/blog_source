@@ -23,6 +23,7 @@
               Comments
             </h2>
             {% assign comments = site.data.comments[page.slug] | where_exp: 'item', 'item._parent == nil' %}
+      {% if site.repository and site.staticman.branch %}
             {% for comment in comments %}
               {% assign index   = forloop.index %}
               {% assign p       = comment._parent %}
