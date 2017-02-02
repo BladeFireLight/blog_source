@@ -33,6 +33,7 @@
 }
 
 .archive__item-title {
+  margin-top: 0;
   margin-bottom: 0.25em;
   font-family: $sans-serif-narrow;
 
@@ -52,6 +53,7 @@
 
 .archive__item-excerpt {
   margin-top: 0;
+  margin-bottom: 3em;
   font-size: $type-size-6;
 
   & + p {

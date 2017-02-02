@@ -201,6 +201,12 @@ figure {
     transition: $global-transition;
   }
 
+  iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   > a {
     display: block;
   }
@@ -223,6 +229,45 @@ figure {
     > img {
       @include breakpoint($small) {
         width: calc(33.3333% - 0.5em);
+      }
+    }
+
+    figcaption {
+      width: 100%;
+    }
+  }
+
+  &.fourth {
+    > a,
+    > img {
+      @include breakpoint($small) {
+        width: calc(25% - 0.5em);
+      }
+    }
+
+    figcaption {
+      width: 100%;
+    }
+  }
+
+  &.fifth {
+    > a,
+    > img {
+      @include breakpoint($small) {
+        width: calc(20% - 0.5em);
+      }
+    }
+
+    figcaption {
+      width: 100%;
+    }
+  }
+
+  &.sixth {
+    > a,
+    > img {
+      @include breakpoint($small) {
+        width: calc(16.666% - 0.5em);
       }
     }
 

@@ -16,6 +16,61 @@
   }
 }
 
+/* ==========================================================================
+   Tag Inline List
+   ========================================================================== */
+
+.inline-list {
+  list-style: none;
+  font-size: 50%;
+  margin-left: 0;
+  padding-left: 0;
+  li {
+    list-style-type: none;
+    display: inline;
+  }
+}
+
+.entry-meta {
+  text-transform: uppercase;
+  color: lighten($text-color,60);
+  a {
+    color: lighten($text-color,60);
+  }
+  .vcard {
+    &:before {
+      content: " by ";
+    }
+  }
+  .tag {
+    display: inline-block;
+    margin: 4px;
+    color: #494e52;
+    @include rounded(3px);
+    background-color: lighten($text-color,50);
+      span {
+        float: left;
+        padding: 2px 6px;
+      }
+//      .term {
+//        background-color: lighten($text-color,60);
+//        @include border-radius(0,0,3px,3px);
+//      }
+      .count {
+          background-color: lighten($text-color,40);
+          @include border-radius(3px,3px,0,0);
+      }
+      &:hover {
+          background-color: lighten($text-color,40);
+      }
+  }
+  .entry-reading-time {
+    float: right;
+  }
+}
+/* END */
+
+
 .page {
   @include breakpoint($large) {
     @include span(10 of 12 last);
@@ -116,6 +171,7 @@
 
   &--overlay {
     position: relative;
+    min-height: 384px;
     margin-bottom: 2em;
     padding: 3em 0;
     @include clearfix;
@@ -132,6 +188,7 @@
     .wrapper {
       padding-left: 1em;
       padding-right: 1em;
+      padding-top: 3em;
 
       @include breakpoint($x-large) {
         max-width: $x-large;
@@ -150,8 +207,14 @@
       max-width: $medium;
     }
 
+    .page__date {
+      color: #fff;
+      text-align: center;
+    }
+
     .page__title {
       font-size: $type-size-2;
+      text-align: center;
 
       @include breakpoint($small) {
         font-size: $type-size-1;
@@ -297,6 +360,7 @@
 .page__comments-form {
   padding: 1em;
   background: $dark-gray;
+  margin-bottom: 60px;
   transition: $global-transition;
 
   &.disabled {
@@ -313,12 +377,43 @@
   }
 }
 
+#comment-form-reply {
+  display: inline;
+}
+
 .comment {
   @include clearfix();
   margin: 1em 0;
+  position: relative;
+  margin-bottom: 4em;
+  font-size: 0.9em;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid $border-color;
+//  &:not(:last-child) {
+//    border-bottom: 1px solid $border-color;
+//  }
+
+  // comment replies
+  &.child {
+    margin-left: 4.5em;
+
+    &:before,
+    &:after {
+      position: absolute;
+      left: 1.5em;
+      content: '';
+      width: 0.5em;
+      background-color: #e3e3e3;
+    }
+
+    &:before {
+      top: -3em;
+      height: 2em;
+    }
+
+    &:after {
+      top: 4em;
+      bottom: -1em;
+    }
   }
 }
 
@@ -326,11 +421,13 @@
   float: left;
   width: 60px;
   height: 60px;
+  margin-right: 20px;
 
-  @include breakpoint($large) {
-    width: 100px;
-    height: 100px;
-  }
+//  @include breakpoint($large) {
+//    width: 100px;
+//    height: 100px;
+//  }
+
 }
 
 .comment__avatar {
@@ -372,6 +469,23 @@
   }
 }
 
+.comment__message {
+  margin: 0;
+  margin-left: 80px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.comment__reply {
+  margin: 0;
+  margin-left: 80px;
+
+  a {
+    text-decoration: none;
+  }
+}
 
 /*
    Related
