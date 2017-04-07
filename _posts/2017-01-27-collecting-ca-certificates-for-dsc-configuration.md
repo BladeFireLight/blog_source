@@ -21,7 +21,6 @@ The problem with that is getting the certificates either from the node or from a
 
 For this I'm going to be using [PowerShell Automated Lab Environment](https://github.com/theJasonHelmick/PS-AutoLab-Env) and it's Configuration called "devops-powershell-fundamentals"
 
-
 This will generate the following:
 
 1. DC1 - Domain Controller and Certificate Authority
@@ -32,7 +31,25 @@ This will generate the following:
 5. Certificate Template called "DSC Template"
 6. Auto-Enrollment GPO
 
+Once that is up and running we can connect to cli1 via PowerShell Direct
+
 ## Demo 
 
-I'm going to start with the 
+I'm going to start with installing PKITools from the Powershell Gallery  (and selecting Yes to install NuGet and allow use of untrusted rpo, this is new lab afterall)
+
+{% highlight Powershell %}
+Install-Module PKITools
+Get-Command -Module PkiTools
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Get-ADCertificateTemplate                          1.6        PkiTools
+Function        Get-CaLocationString                               1.6        PkiTools
+Function        Get-CertificatAuthority                            1.6        PkiTools
+Function        Get-CertificateTemplateOID                         1.6        PkiTools
+Function        Get-IssuedCertificate                              1.6        PkiTools
+{% endhighlight %}
+
+                  
+
 
