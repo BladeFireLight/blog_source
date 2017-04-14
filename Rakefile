@@ -107,6 +107,12 @@ task :commit do
   system 'git -C _site commit -a -m "Automated Commit : Content Update"'
   puts "* Commit : Pushing commit of ./_site to the GitHub"
   system "git -C _site push"
+  puts "* Commit : Adding changes in ./ to repo"
+  system "git -C . add -A"
+  puts "* Commit : Committing the contents of ./ "
+  system 'git -C . commit -a -m "Automated Commit : Content Update"'
+  puts "* Commit : Pushing commit of ./ to the GitHub"
+  system "git -C . push"
 end
 
 # Usage: rake deploy, rake deploy:win
