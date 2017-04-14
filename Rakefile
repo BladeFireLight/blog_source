@@ -12,17 +12,17 @@ namespace :serve do
   desc "Serve Jekyll site locally"
   task :dev do
     puts "Starting up Jekyll site server..."
-    system "bundle exec jekyll serve --no-watch "
+    system "bundle exec jekyll serve "
   end
   desc "Serve Jekyll site locally and watch for changes"
-  task :watch do
+  task :nowatch do
     puts "Starting up Jekyll site server..."
-    system "bundle exec jekyll serve "
+    system "bundle exec jekyll serve --no-watch "
   end
   desc "Regenerate files and drafts for development"
   task :drafts do
     puts "* Regenerating files and drafts for development..."
-    system "bundle exec jekyll serve --no-watch --profile --drafts "
+    system "bundle exec jekyll serve --profile --drafts "
   end
 end
 
@@ -36,11 +36,11 @@ namespace :build do
     system "JEKYLL_ENV=production; bundle exec jekyll build"
   end
 
-  desc "Regenerate files for production (Windows systems)"
-  task :win do
-    puts "* Regenerating files..."
-    system "bundle exec jekyll build"
-  end
+#  desc "Regenerate files for production (Windows systems)"
+#  task :win do
+#    puts "* Regenerating files..."
+#    system "bundle exec jekyll build"
+#  end
 
   desc "Regenerate files and drafts"
   task :drafts do
