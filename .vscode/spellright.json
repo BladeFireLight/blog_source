@@ -1,0 +1,16 @@
+{
+    "language": "en",
+    "groupDictionaries": true,
+    "documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "statusBarIndicator": true,
+    "suggestionsInHints": true,
+    "updateInterval": 1000,
+    "ignoreWords": [
+        "endhighlight"
+    ],
+    "ignoreRegExps": []
+}
