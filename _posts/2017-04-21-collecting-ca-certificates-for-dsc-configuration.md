@@ -12,7 +12,7 @@ Microsoft PFE Ashely McGlone [recommends](https://blogs.msdn.microsoft.com/power
 
 ![Mof Credential Security Chart]({{ site.url }}{{ site.baseurl }}/assets/images/MofCredSecurity.png)
 
-Starting in WMF 5.0 .MOF are [encrypted at rest](https://msdn.microsoft.com/en-us/powershell/wmf/5.0/dsc_encryptedmof) on the Node by . But that is not the case for the file on the pull server. So I'm going on the assumption that this is still a best practice. 
+Starting in WMF 5.0 .MOF are [encrypted at rest](https://msdn.microsoft.com/en-us/powershell/wmf/5.0/dsc_encryptedmof) on the Node. But that is not the case for the file on the pull server. So I'm going on the assumption that this is still a best practice. 
 {: .notice--info}
 
 The problem with that is getting the certificates either from the node or from a CA (Certificate Authority) to the DSC development workstation or CI/CD (Continuous Integration/Continuous Deployment) server. I'm going to cover one method.
