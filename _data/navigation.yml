@@ -6,8 +6,8 @@ main:
     url: /nuggets/
   - title: "Windows Image Tools"
     url: /windowsimagetools/
-  - title: "PKI Tools"
-    url: /windowsimagetools/
+#  - title: "PKI Tools"
+ #   url: /pkitools/
   - title: "Archive by Date"
     url: /year-archive/
   - title: "By Category"
