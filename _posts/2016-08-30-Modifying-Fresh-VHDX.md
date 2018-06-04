@@ -7,8 +7,6 @@ tags: [VHDX, WindowsUpdate, WindowsUpdateTools, Module]
 date: 2016-08-30T16:48:59-05:00
 ---
 
-{% include toc %}
-
 ## Continuing onward
 
 In the last post I talked about Unattend.xml and using WindowsImageTools to create a new VHDX with an Unattend.xml and FirstBoot.ps1 for it to run.
@@ -25,12 +23,12 @@ We are going to have our VHDX install [7Zip](http://www.7-zip.org/download.html)
 
 I downloaded my MSI into G:\filesToInject\PsTemp and now i'm going to replace firstboot.ps1 so it will silently install it and write a log and shutdown
 
-{% highlight PowerShell %}
+``` PowerShell
 $BetterFirstBootContent = {
    start-process C:\PsTemp\7z1602-x64.msi -ArgumentList '/q','INSTALLDIR="C:\Program Files\7-Zip"' -wait
 }
  New-Item -Path "G:\filesToInject\PsTemp" -Name FirstBoot.ps1 -ItemType 'file' -Value $BetterFirstBootContent -Force
-{% endhighlight %}
+```
 
 ### Placing the files in the VHDX
 
@@ -40,12 +38,12 @@ So now we need to get the two fils into our existing VHD. Now I could just run C
 
 Mount-VhdAndRunBlock is one of my favorite tools. It will mount a VHD and run a script block allowing me to manipulate the files inside. This can be used for copying in files, Editing the registry, checking if a file exists and so on.
 
-{% highlight PowerShell %}
+``` PowerShell
 $ScriptBlock = {
   copy G:\filesToInject\PsTemp\*.* "$($driveletter):\PsTemp\" -Force
 } 
 Mount-VhdAndRunBlock -VHD 'G:\vhd\2012r2_eval_Core.vhdx' -block $ScriptBlock
-{% endhighlight %}
+```
 
 Now that we have the better first boot script we need to create a VM to attach the vhdx to. for that I'm going to use Invoke-CreateVmRunAndWait. 
 
@@ -53,7 +51,7 @@ Now that we have the better first boot script we need to create a VM to attach t
 
 Lets look at what we need besides the vhdx to use Invoke-CreateVmRunAndWait
 
-{% highlight PowerShell %}
+``` PowerShell
 help Invoke-CreateVmRunAndWait
 
 NAME
@@ -66,7 +64,7 @@ SYNOPSIS
 SYNTAX
     Invoke-CreateVmRunAndWait [-VhdPath] <String> [-VmGeneration] <Int32> [-VmSwitch] <String> [[-vLan] <Int32>]
     [[-ProcessorCount] <Int32>] [[-MemoryStartupBytess] <Int64>] [<CommonParameters>]
-{% endhighlight %}
+```
 
 So according to the syntax VhdPath, VmGeneration and VmSwitch are required parameters.
 
@@ -76,14 +74,14 @@ While I know what type of VHDX i created, when creating automation script we may
 
 Get-VhdPartitionStyle will return a string of either MBR for Master Boot Record or GPT for GUID Partition Table. Generation 1 VM's are based on BIOS and windows only works with MBR partitions for BIOS based computers. Generation 2 VM's are based on uEFI architecture and Windows uses GPT partitions by default with uEFI. 
 
-{% highlight PowerShell %}
+``` powershell
 $vmGeneration = 2 #default to gen2 
 $PartitionStyle = Get-VhdPartitionStyle -vhd 'G:\vhd\2012r2_eval_Core.vhdx'
 if ($PartitionStyle -eq 'GPT') 
 {
     $vmGeneration = 2
 }
-{% endhighlight %}
+```
 
 #### Getting the switch 
 
@@ -95,26 +93,26 @@ $VmSwitch = (Get-VMSwitch)[0].Name #First switch
 
 ### Creating the VM
 
-{% highlight PowerShell %}
+``` PowerShell
 Invoke-CreateVmRunAndWait -VhdPath 'G:\vhd\2012r2_eval_Core.vhdx' -VmGeneration $vmGeneration -VmSwitch $VmSwitch -verbose
-{% endhighlight %}
+```
 
 We now have a randomly named vm that will run our script and install z7ip. Because it running this during the specialize phase once it's done it will reboot and end up at the "Press Ctrl+Alt+Del to login" I"m just going to use Hyper-V manager to shut it down.
 
-{% highlight PowerShell %}
+``` PowerShell
 VERBOSE: [Invoke-CreateVmRunAndWait] : Creating VM 1utbdwad at 08/30/2016 10:57:29
 VERBOSE: [Invoke-CreateVmRunAndWait] : VM 1utbdwad stopped
 VERBOSE: [Invoke-CreateVmRunAndWait] : VM 1utbdwad Deleted at 08/30/2016 11:08:47
-{% endhighlight %}
+```
 
 ### Checking the results
 
-{% highlight PowerShell %}
+``` PowerShell
 $ScriptBlock = {
   dir "$($driveletter):\Program Files\"
 } 
 Mount-VhdAndRunBlock -VHD 'G:\vhd\2012r2_eval_Core.vhdx' -block $ScriptBlock
-{% endhighlight %}
+```
 
 ```
     Directory: K:\Program Files

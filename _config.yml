@@ -5,22 +5,31 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
+# Theme Settings
+#
+# Review documentation to determine if you should use `theme` or `remote_theme`
+# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
+
+# theme                  : "minimal-mistakes-jekyll"
+# remote_theme           : "mmistakes/minimal-mistakes"
+minimal_mistakes_skin    : "bfldark" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
 # Site Settings
 locale                   : "en-US"
 title                    : "PowerShell Journey"
 title_separator          : "-"
 name                     : "David Jones"
-description              : "Randome musings of a IT Pro"
+description              : "Random musings of a IT Pro"
 url                      : "https://blog.bladefirelight.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "BladeFireLight/blog_source" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "bladefirelight/blog_source" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/default-teaser.png" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-breadcrumbs              : true # false # true, false (default)
+breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : "staticman" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "staticman_v2" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
   disqus:
-    shortname            : "blogbladefirelightcom" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -28,32 +37,43 @@ comments:
     appid                :
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
-staticmanUrl             : "https://api.staticman.net/v2/entry/BladeFireLight/blog_source/master"
-#staticman:
-#  allowedFields          : ['name', 'email', 'url', 'message']
-#  allowedOrigins         : ["localhost", "blog.bladefirelight.com"]
-#  branch                 : "master"
-#  commitMessage          : "New comment."
-#  filename               : comment-{@timestamp}
-#  format                 : "yml"
-#  moderation             : true
-#  path                   : "_data/comments/{options.slug}" # "/_data/comments/{options.slug}" (default)
-#  requiredFields         : ['name', 'email', 'message']
-#  transforms:
-#    email                : "md5"
-#  generatedFields:
-#    date:
-#      type               : "date"
-#      options:
-#        format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+staticman:
+  allowedFields          : # ['name', 'email', 'url', 'message']
+  branch                 : "master"
+  commitMessage          : # "New comment."
+  filename               : # comment-{@timestamp}
+  format                 : # "yml"
+  moderation             : # true
+  path                   : # "/_data/comments/{options.slug}" (default)
+  requiredFields         : # ['name', 'email', 'message']
+  transforms:
+    email                : # "md5"
+  generatedFields:
+    date:
+      type               : # "date"
+      options:
+        format           : # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+reCaptcha:
+  siteKey                :
+  secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-
+search                   : true # true, false (default)
+search_full_content      : true # true, false (default)
+search_provider          : algolia # lunr (default), algolia, google
+algolia:
+  application_id         : H9ZC0SHNUQ # YOUR_APPLICATION_ID
+  index_name             : Blog # YOUR_INDEX_NAME
+  search_only_api_key    : b4603a9d806ac4befb326ce1731d101e # YOUR_SEARCH_ONLY_API_KEY
+  powered_by             : false # true (default), false
+google:
+  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
+  instant_search         : # false (default), true
 # SEO Related
 google_site_verification :
 bing_site_verification   :
-alexa_site_verification  :
 yandex_site_verification :
+naver_site_verification  :
 
 # Social Sharing
 twitter:
@@ -75,16 +95,18 @@ analytics:
   provider               : false # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          :
+    anonymize_ip         : # true, false (default)
 
 
 # Site Author
 author:
   name             : "David Jones"
   avatar           : "/assets/images/avatar1.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "20 years IT Pro. life long student of tech"
+  bio              : "20 years IT Pro. Life long student of tech"
   location         : "Gretna, NE"
   email            : "BladeFireLight@outlook.com"
   uri              :
+  home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
   codepen          :
   dribbble         :
@@ -92,15 +114,16 @@ author:
   facebook         :
   foursquare       :
   github           : BladeFireLight
+  gitlab           :
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         :
+  linkedin         : # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
-  steam            :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
+  steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
   twitter          : BladeFireLight
   vine             :
@@ -169,18 +192,18 @@ kramdown:
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: expanded # compressed #   http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: "US/Central" # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/Chicago # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
-# Plugins
-gems:
+# Plugins (previously gems:)
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -208,10 +231,10 @@ whitelist:
 #  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
 #  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
-  type: jekyll-archives
-  path: /
+  type: jekyll-archives # liquid
+  path: /categories/
 tag_archive:
-  type: jekyll-archives
+  type: jekyll-archives # liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
 jekyll-archives:
@@ -233,12 +256,6 @@ compress_html:
   ignore:
     envs: development
 
-collections:
-  components:
-    output: false
-  colors:
-    output: false
-
 
 # Defaults
 defaults:
@@ -250,6 +267,8 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments:  true
+      comments: true
       share: true
       related: true
+      toc : true
+      classes: wide

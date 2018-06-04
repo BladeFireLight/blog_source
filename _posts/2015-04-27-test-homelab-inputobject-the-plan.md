@@ -4,7 +4,7 @@ date: 2015-04-27
 tags: [TestLab]
 excerpt: "My Plan for a home test lab"
 ---
-{% include toc %}
+
 ### Posts in This series
 
 1. Test-HomeLab -InputObject "The Plan" (This Post)

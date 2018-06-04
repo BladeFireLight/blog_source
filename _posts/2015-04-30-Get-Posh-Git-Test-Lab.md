@@ -4,7 +4,6 @@ date: 2015-04-30
 tags: [TestLab]
 excerpt: "My initial test lab starting to take shape."
 ---
-{% include toc %}
 ### Posts in This series
 
 1. [Test-HomeLab -InputObject "The Plan"]({% post_url 2015-04-27-test-homelab-inputobject-the-plan %})
@@ -33,7 +32,7 @@ Now I dont plan on using the GUI for the purpose of this blog so I’m going to 
 
 The commands for that are.
 
-{% highlight powershell %}
+```	powershell
 #create/add posh-git to profile
 if (-not (test-path (split-path -Path $profile.CurrentUserAllHosts -Parent)))
 {
@@ -41,11 +40,11 @@ mkdir (split-path -Path $profile.CurrentUserAllHosts -Parent)
 }
 '. (Resolve-Path "$env:LOCALAPPDATA\GitHub\shell.ps1")' | out-file -Path $profile.CurrentUserAllHosts -Append
 '. $env:github_posh_git\profile.example.ps1' | out-file -Path $profile.CurrentUserAllHosts -Append
-{% endhighlight %}
+```
 
 restart powershell and I can run get-module to see what modules are loaded.
 
-{% highlight powershell %}
+```	powershell
 C:\> Get-Module
  
 ModuleType Version    Name                                ExportedCommands
@@ -54,6 +53,6 @@ Script     1.0.0.0    ISE                                 {Get-IseSnippet, Impor
 Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Computer, Add-Content, Checkpoint-Computer, Clear-Content...}
 Manifest   3.1.0.0    Microsoft.PowerShell.Utility        {Add-Member, Add-Type, Clear-Variable, Compare-Object...}
 Script     0.0        posh-git                            {Add-SshKey, Enable-GitColors, Get-AliasPattern, Get-GitDirectory...}
-{% endhighlight %}
+```
 
 Now we are ready to fork the PowerShell.org DSC repository and clone it locally.

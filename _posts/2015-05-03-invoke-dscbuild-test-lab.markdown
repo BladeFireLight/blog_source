@@ -5,7 +5,6 @@ excerpt:
 tags: [TestLab]
 date: 2015-05-03T00:00:00-05:00
 ---
-{% include toc %}
 ### Posts in This series
 
 1. [Test-HomeLab -InputObject "The Plan"]({% post_url 2015-04-27-test-homelab-inputobject-the-plan %})
@@ -34,7 +33,7 @@ Once these dependencies are set up, you can execute SampleBuild.ps1.  It will ru
 
 Looks like we are going to need a few more DSC resources. I’m going to go and fork/clone them just like before. (don’t forget to update the URL’s to match your own fork. )
 
-~~~	powershell
+```	powershell
 # Download required files via Git
 #Next line not needed if you were following along with my last blog
 git clone https://github.com/BladeFireLight/DSC.git c:\GitHub\PshOrgDSC --branch development
@@ -43,11 +42,11 @@ git clone https://github.com/BladeFireLight/cWebAdministration.git c:\GitHub\cWe
 git clone https://github.com/BladeFireLight/cSmbShare.git c:\GitHub\cSmbShare
 git clone https://github.com/BladeFireLight/Pester c:\GitHub\Pester
 git clone https://github.com/BladeFireLight/ProtectedData.git c:\GitHub\ProtectedData
-~~~
+```
 
 Now I’m going to create some folder structure and place all the files where they need to go
 
-~~~	powershell
+```	powershell
 #Create Folders
 mkdir c:\DSC
 mkdir C:\DSC\BuldOutput
@@ -70,7 +69,7 @@ copy C:\github\PshOrgDSC\Tooling\Examples\* C:\DSC\DSC_Script -Include 'SampleCo
 #delete unneeded folders.
 dir -Path c:\dsc -Include '.git' -Recurse | del -Recurse -Force #-Confirm:$false
 dir -Path 'C:\Program Files\WindowsPowerShell\Modules' -Include '.git' -Recurse | del -Recurse -Force
-~~~
+```
 
 Then result should give us a folder structure like this
 

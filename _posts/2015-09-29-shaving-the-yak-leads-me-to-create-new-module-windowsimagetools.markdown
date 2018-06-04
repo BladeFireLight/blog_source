@@ -6,8 +6,6 @@ tags: [Rant]
 date: 2015-09-29T00:00:00-05:00
 ---
 
-{% include toc %}
-
 ## My Yak needs shaving.
 
 If your not familiar with the term.

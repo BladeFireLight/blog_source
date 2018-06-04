@@ -7,8 +7,6 @@ tags: [VHDX, WindowsUpdate, WindowsUpdateTools, Module]
 date: 2016-08-21T16:48:59-05:00
 ---
 
-{% include toc %}
-
  ## Getting started
 
 To automate the creation of clean VM's we need a clean diskimage. for that we will use Convert-Wim2VHD from WindowsImageTools
@@ -19,11 +17,11 @@ You can get an evaluation copy of windows from [TechNet Evaluation Center](https
 
 I'm going to use a evaluation of 2012r2. I have it downloaded and saved to G:\ISO\Srv2012r2Eval.iso and i'm going to create a new vhdx in G:\vhd 
 
-{% highlight PowerShell %}
+```	powershell
 Convert-Wim2VHD -Path G:\vhd\2012r2_eval_Core.vhdx -Size 60gb -Dynamic -DiskLayout UEFI -SourcePath G:\iso\Srv2012r2Eval.ISO -Index 1 -Verbose
-{% endhighlight %}
+```
 
-~~~
+```	powershell
 VERBOSE: [Convert-Wim2VHD] : Overwrite partitions inside [G:\vhd\2012r2_eval_Core.vhdx] 
 with content of [G:\iso\Srv2012r2Eval.ISO]
 VERBOSE: [Convert-Wim2VHD] : InitializeVHDPartitionParam
@@ -126,15 +124,15 @@ VERBOSE: [Run-Executable] : Return code was [0]
 VERBOSE: [Set-VHDPartition] [2012r2_eval_Core.vhdx] : Removing Drive letters
 VERBOSE: [Set-VHDPartition] [2012r2_eval_Core.vhdx] : Dismounting
 VERBOSE: [Set-VHDPartition] [2012r2_eval_Core.vhdx] : Finished
-~~~
+```
 
 ## Server with a GUI and .net 3.5
 
 Lets say we need a VM with the Desktop and .Net 3.5 to run a legacy vendor app.
 
-{% highlight PowerShell %}
+```	powershell
 Convert-Wim2VHD -Path G:\vhd\2012r2_eval_gui.vhdx -Size 60gb -Dynamic -DiskLayout UEFI -SourcePath G:\iso\Srv2012r2Eval.ISO -Index 2 -Feature NetFx3
-{% endhighlight %}
+```
 
 The -Feature command takes the feature names that would be understood by DISM, or Install-WindowsOptionalFeature
 

@@ -1,26 +1,28 @@
-<script src="{{ '/assets/js/main.min.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ '/assets/js/staticman.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-
-<!-- If viewing the search page, include Lunr scripts -->
-{% if page.url == '/search/' %}
-	<!-- Search Results by jekyll-lunr-js-search -->
-	<script src="{{ '/assets/js/lunr/lunr.min.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ '/assets/js/lunr/mustache.min.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ '/assets/js/lunr/date.format.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ '/assets/js/lunr/URI.min.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ '/assets/js/lunr/jquery.lunr.search.js' | absolute_url }}" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-	  $(function() {
-	  $('#search-query').lunrSearch({
-	    indexUrl: '/assets/js/lunr/index.json',     // URL of the `index.json` index data for your site
-	    results:  '#search-results',                // jQuery selector for the search results container
-	    entries:  '.entries',                       // jQuery selector for the element to contain the results list, must be a child of the results element above.
-	    template: '#search-results-template'        // jQuery selector for the Mustache.js template
-	  });
-	  });
-	</script>
+{% if site.footer_scripts %}
+  {% for script in site.footer_scripts %}
+    {% if script contains "://" %}
+      {% capture script_path %}{{ script }}{% endcapture %}
+    {% else %}
+      {% capture script_path %}{{ script | relative_url }}{% endcapture %}
+    {% endif %}
+    <script src="{{ script_path }}"></script>
+  {% endfor %}
+{% else %}
+  <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
 {% endif %}
 
+{% if site.search == true or page.layout == "search" %}
+  {%- assign search_provider = site.search_provider | default: "lunr" -%}
+  {%- case search_provider -%}
+    {%- when "lunr" -%}
+      {% include search/lunr-search-scripts.html %}
+    {%- when "google" -%}
+      {% include search/google-search-scripts.html %}
+    {%- when "algolia" -%}
+      {% include search/algolia-search-scripts.html %}
+  {%- endcase -%}
+{% endif %}
 
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}

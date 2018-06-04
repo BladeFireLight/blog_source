@@ -37,7 +37,7 @@ Once that is up and running we can connect to cli1 via PowerShell Direct
 
 I'm going to start with installing PKITools from the PowerShell Gallery  (and selecting Yes to install NuGet and allow use of untrusted rpo, this is new lab after all)
 
-{% highlight Powershell %}
+``` powershell
 Install-Module PKITools
 Get-Command -Module PkiTools
 
@@ -48,7 +48,7 @@ Function        Get-CaLocationString                               1.6        Pk
 Function        Get-CertificatAuthority                            1.6        PkiTools
 Function        Get-CertificateTemplateOID                         1.6        PkiTools
 Function        Get-IssuedCertificate                              1.6        PkiTools
-{% endhighlight %}
+```
 
                   
 The one I want to focus on is Get-IssuedCertificate. As part of a DSC build process I want to collect the public certificates for each node. Pulling the certificate from each node is one option, but not practical in large network, and may not even be be possible due to lack of connectivity. Thankfully all the public certificates also reside on the Certificate Authority that issues them. 
@@ -57,16 +57,16 @@ In our lab there is only one domain and one CA (also the DC. no not do that in p
 
 First lets look at the parameters. 
 
-{% highlight PowerShell %}
+``` powershell
 SYNTAX
     Get-IssuedCertificate [[-ExpireInDays] <Int32>] [[-CAlocation] <String[]>] [[-Properties] <String[]>]
     [[-CertificateTemplateOid] <String>] [[-CommonName] <String>] [[-Credential] <PSCredential>] [<CommonParameters>]
-{% endhighlight %}
+```
 
 
 No parameters are required. lets see what it does 
 
-{% highlight PowerShell %}
+``` powershell
 [hv01]: [Cli1]: PS C:\> Get-IssuedCertificate
 
 
@@ -144,11 +144,11 @@ Certificate Template        : 1.3.6.1.4.1.311.21.8.8376484.9891361.12404633.1445
 
 PSComputerName              : DC1.Company.Pri
 RunspaceId                  : 146e5d7a-b85a-4540-9360-fea7413a9978
-{% endhighlight %}
+```
 
 That got every issued certificate for every CA on the current domain. More then I need. Obviously we need to trim that down to just the DSC certificates. for that we will need to specify -CertificateTemplateOID. Lets look at the help for that parameter.
 
-{% highlight PowerShell %}
+``` powershell
 [hv01]: [Cli1]: PS C:\> help Get-IssuedCertificate -Parameter CertificateTemplateOid
 
 -CertificateTemplateOid <String>
@@ -159,27 +159,27 @@ That got every issued certificate for every CA on the current domain. More then 
     Default value
     Accept pipeline input?       false
     Accept wildcard characters?  false
-{% endhighlight %}
+```
 
 Good it has a function to get the OID lets look at that.
 
-{% highlight PowerShell %}
+``` powershell
 SYNTAX
     Get-CertificateTemplateOID [-Name] <String> [[-Domain] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-{% endhighlight %}
+```
 
 Only the -Name is required. That I know.
 
-{% highlight PowerShell %}
+``` powershell
 [hv01]: [Cli1]: PS C:\> Get-CertificateTemplateOID DSCTemplate
 1.3.6.1.4.1.311.21.8.16187918.14945684.15749023.11519519.4925321.197.13392998.8282280
-{% endhighlight %}
+```
 
 And I though GUIDS were an eye full.
 
 Get-IssuedCertificate also has a -Propterties paramaters lets look at that.
 
-{% highlight PowerShell %}
+``` powershell
 [hv01]: [Cli1]: PS C:\> help Get-IssuedCertificate -Parameter Properties
 
 -Properties <String[]>
@@ -201,21 +201,21 @@ Get-IssuedCertificate also has a -Propterties paramaters lets look at that.
             'Binary Certificate' )
     Accept pipeline input?       false
     Accept wildcard characters?  false
-{% endhighlight %}
+```
 
 For collecting the Certificates I only need the 'Issued Common Name' and 'Binary Certificate' 
 
-{% highlight PowerShell %}
+``` powershell
 [hv01]: [Cli1]: PS C:\> $DSCCerts = Get-IssuedCertificate -CertificateTemplateOid (Get-CertificateTemplateOID -Name 'DSC
 Template') -Properties 'Issued Common Name', 'Binary Certificate'
 [hv01]: [Cli1]: PS C:\>
 [hv01]: [Cli1]: PS C:\> $DSCCerts.Count
 4
-{% endhighlight %}
+```
 
 So that got me 4 certs. Now I can step through each one and save them. 
 
-{% highlight PowerShell %}
+``` powershell
 [hv01]: [Cli1]: PS C:\> mkdir c:\certs
 
 
@@ -243,6 +243,7 @@ Mode                LastWriteTime         Length Name
 -a----        4/21/2017   7:12 AM           1978 DC1.Company.Pri.cer
 -a----        4/21/2017   7:12 AM           1972 S1.Company.Pri.cer
 -a----        4/21/2017   7:12 AM           1972 S2.Company.Pri.cer
-{% endhighlight %}
+```
+{: .pre-wrap}
 
 Now I have the certificate files for each node I can use for DSC.

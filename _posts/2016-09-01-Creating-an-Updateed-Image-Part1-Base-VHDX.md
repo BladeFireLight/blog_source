@@ -7,8 +7,6 @@ tags: [VHDX, WindowsUpdate, WindowsUpdateTools, Module]
 date: 2016-09-01T16:48:59-05:00
 ---
 
-{% include toc %}
-
 ## Staring over
 
 In the last post I demonstrated creating a fresh VHDX, with unattent.xml and using that to install 7zip.
@@ -19,7 +17,7 @@ Now i'm going to throw all that out, and starting over with a base image to inst
 
 For this we need the folder scructure used the WindowsImageTools to store the files. Luckily we have New-WindowsImageToolsExample that will create the folders and files we need.
 
-{% highlight PowerShell %}
+```	powershell
 New-WindowsImageToolsExample -Path g:\Blog_Example
 WARNING: Unable to read Windows Image Tools Update Cofniguration from g:\Blog_Example\Config.xml, creating a new file
 
@@ -30,7 +28,7 @@ WARNING: Unable to read Windows Image Tools Update Cofniguration from g:\Blog_Ex
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 d-----         9/6/2016   4:09 PM                Blog_Example
-{% endhighlight %}
+```
 
 Let's take a look at what we get
 
@@ -58,7 +56,7 @@ I will not be delving into the example ps1 files. I'm going to walkthrough a sim
 
 We will start by looking at the Config.xml
 
-{% highlight XML %}
+``` xml
 <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
   <Obj RefId="0">
     <TN RefId="0">
@@ -97,11 +95,11 @@ We will start by looking at the Config.xml
     </DCT>
   </Obj>
 </Objs>
-{% endhighlight %}
+```
 
 It's a basic clixml file created with Export-Clixml containing the configuration used by WindowsImageTools to manage network settings for the vm's it creates. Now I'm not about to edit that file manual, and while I could use Import-Clixml/Export-Clixml to work with it. It simpler to use the functions that come with WindowsImageTools Get-UpdateConfig/Set-UpdateConfig
 
-```
+``` powershell
 Get-UpdateConfig -Path G:\Blog_Example\
 
 Name                           Value
@@ -117,7 +115,7 @@ IpAddress                      192.168.0.100
 
 As you can see the default uses DHCP for the vm's IP assignment, does not use vLan tageing and attached to the virtual switch called vmswitch. To use it in my enviroment I need to make one small change
 
-```
+``` powershell
 Set-UpdateConfig -Path G:\Blog_Example\ -VmSwitch Bridge | Get-UpdateConfig
 
 Name                           Value
@@ -137,21 +135,15 @@ Now we are ready to add a base images.
 
 I'm going to create two images. One bear-bones 2012 R2 Core and one 2012 R2 GUI with .net 3.5. The reason for this is I want one really small WIM/VHDX for a starting port, and one WIM that I can use for a source to add Windows Features.
 
-{% capture protip_critical_css %}
-#### Why the Soruce WIM?
 
-Windows Core comes with very little of the Windows Features installed, and when you add them Install-WindowsFeature will look to Windows Update for the missing bits. However if you don't have internet access then you need a source WIM. In a secure environment InfoSec usually frowns on web surfing from servers and expect you to use WSUS for updates. Unfortunately Install-WindowsFeature will not use WSUS. 
-{% endcapture %}
+**Why the Soruce WIM?**  Windows Core comes with very little of the Windows Features installed, and when you add them Install-WindowsFeature will look to Windows Update for the missing bits. However if you don't have internet access then you need a source WIM. In a secure environment InfoSec usually frowns on web surfing from servers and expect you to use WSUS for updates. Unfortunately Install-WindowsFeature will not use WSUS. 
+{: .notice--info}
 
-<div class="notice--info">
-  {{ protip_critical_css | markdownify }}
-</div>
-
-{% highlight PowerShell %}
+``` PowerShell
 Add-UpdateImage -Path 'G:\Blog_Example\' -FriendlyName 'Srv2012r2_Source' -DiskLayout UEFI -SourcePath 'G:\iso\Srv2012r2Eval.ISO'  -AdminCredential (Get-Credential) -AddPayloadForRemovedFeature -Index 4
 Add-UpdateImage -Path 'G:\Blog_Example\' -FriendlyName 'Srv2012r2_Core' -DiskLayout UEFI -SourcePath 'G:\iso\Srv2012r2Eval.ISO'  -AdminCredential (Get-Credential) -Index 3
 dir 'G:\Blog_Example\BaseImage\'
-{% endhighlight %}
+```
 
 This gives us the two files. 
 

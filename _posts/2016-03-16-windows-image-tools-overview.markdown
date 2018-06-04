@@ -7,8 +7,6 @@ tags: [VHDX, WindowsUpdate, WindowsUpdateTools, Module]
 date: 2016-03-16T16:48:59-05:00
 ---
 
-{% include toc %}
-
 ## The problem
 
 One of the time consuming steps to deploying new VMs is the time spend managing Images and and applying patches. I’m not big on Golden images. I tend to use a fully patched VHDX or VMDK  and let DSC handle the configuration and software. This is not the fastest, and at scale you need to create more then one image based on what saves the most time.  (IIS, SQL, Exchange, etc…).

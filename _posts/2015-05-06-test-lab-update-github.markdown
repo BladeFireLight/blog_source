@@ -5,7 +5,6 @@ excerpt:
 tags: [TestLab]
 date: 2015-05-06T00:00:00-05:00
 ---
-{% include toc %}
 
 ### Posts in This series
 
@@ -23,17 +22,17 @@ The first thing I’m going to modify is SampleConfiguration.psm1, now this file
 
 The line i’m talking about is here
 
-~~~ powershell
+```	powershell
  Import-Module DscConfiguration -ErrorAction Stop
-~~~
+```
 
 This imports a module that is already loaded by SampleBuild.ps1 but is also not in the path at this point of Invoke-DscBuild, unless the DscConfiguration module is added to a path in -ModulePath used by Invoke-DscBuild.  Now if your going to run import-module SampleConfiguration crate the ConfigurationData hash table your self and call SampleConfiguration then it makes sense to have that here. I don’t imagine anyone doing that but stranger things have happen, so I’m going to keep that line but wrap it in something to avoid the requirement of placing extra modules in DSC_Tools
 
-~~~ powershell
+```	powershell
 if (-not (Get-Module DscConfiguration)) {
  Import-Module DscConfiguration -ErrorAction Stop
 }
-~~~
+```
 
 This checks to see if DscConfiguration is already loaded into memory and skips the import is it is.
 
@@ -43,7 +42,7 @@ Next up is SampleBuild.ps1, I dont have any changes to make from what I did last
 
 Now Readme.md in the examples folder needs some serious work.
 
-~~~
+```
 Example DSC Build
 ------
 
@@ -72,7 +71,7 @@ If you plan on modifying SampleConfiguration.psm1 inside of DSC_Script you will 
 Once these dependencies are set up, you can execute SampleBuild.ps1.  It will run tests against the 3 modules in your DSC_Resources folder, compile your configuration into MOF documents, produce zip files for the resource modules, generate checksums for everything and copy them into BuildOutput
 
 _Note:  The SampleBuild.ps1 file currently just dumps DSC_Tooling modules into the temporary folder, since I wasn't using that feature.  We'll build on these examples soon to show off some of the other functionality in the DscBuild and DscConfiguration modules, such as encrypting credentials in source control._
-~~~
+```
 
 If you compare with my last post you will notice I removed the line about placing SampleConfguration into C:\Program Files\WindowsPowerShell\Modules\. this path is no longer in the psmodulepath when inovke-DscBuild runs, as it used to be. This is due to needing to keep psmodulepath clean so that DSC_Resorces are accessible for configuration building but not necessarily needed.
 
@@ -82,7 +81,7 @@ Now that that is done. I’m going to copy the files into C:\GitHub\PshOrgDSC\To
 
 copy SampleConfiguration.psm1 first. Notice the prompt change thanks to posh-git, (you will not see the color change)
 
-~~~
+```
 C:\GitHub\PshOrgDSC\Tooling\Examples\SampleConfiguration [development +0 ~1 -0]> git add *
 
 C:\GitHub\PshOrgDSC\Tooling\Examples\SampleConfiguration [development +0 ~1 -0]> git commit -m 'Fixed issue with loading scamplescript moduel not loading if module is already loaded but no longer in path'
@@ -90,11 +89,11 @@ C:\GitHub\PshOrgDSC\Tooling\Examples\SampleConfiguration [development +0 ~1 -0]>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 C:\GitHub\PshOrgDSC\Tooling\Examples\SampleConfiguration [development]>
-~~~
+```
 
 next up SampleBuild.ps1
 
-~~~
+```
 C:\GitHub\PshOrgDSC\Tooling\Examples [development +0 ~1 -0]> git add *
 
 C:\GitHub\PshOrgDSC\Tooling\Examples [development +0 ~1 -0]> git commit -m 'updated SampleBuild.ps1 to include missing value to invoke-DSCBuild. and added -verbose'
@@ -102,11 +101,11 @@ C:\GitHub\PshOrgDSC\Tooling\Examples [development +0 ~1 -0]> git commit -m 'upda
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 C:\GitHub\PshOrgDSC\Tooling\Examples [development]>
-~~~
+```
 
 last up readme.md
 
-~~~
+```
 C:\GitHub\PshOrgDSC\Tooling\Examples [development +0 ~1 -0]> git add *
 
 C:\GitHub\PshOrgDSC\Tooling\Examples [development +0 ~1 -0]> git commit -m 'updated \Tooling\Example\Readme.md to match the current state of development, and included section showing required folder structure'
@@ -114,14 +113,14 @@ C:\GitHub\PshOrgDSC\Tooling\Examples [development +0 ~1 -0]> git commit -m 'upda
  1 file changed, 14 insertions(+), 2 deletions(-)
 
 C:\GitHub\PshOrgDSC\Tooling\Examples [development]>
-~~~
+```
 
 finally I push the commits to my fork
 
-~~~
+```
 C:\GitHub\PshOrgDSC\Tooling\Examples [development]> git push
 git : To https://github.com/BladeFireLight/DSC.git
-~~~
+```
 
 Now I can subit a pull request.
 
