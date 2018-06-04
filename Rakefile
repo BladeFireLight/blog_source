@@ -14,7 +14,7 @@ namespace :serve do
     puts "Starting up Jekyll site server..."
     system "bundle exec jekyll serve "
   end
-  desc "Serve Jekyll site locally and watch for changes"
+  desc "Serve Jekyll site locally and do not watch for changes"
   task :nowatch do
     puts "Starting up Jekyll site server..."
     system "bundle exec jekyll serve --no-watch "
