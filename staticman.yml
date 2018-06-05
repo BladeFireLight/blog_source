@@ -11,7 +11,7 @@ comments:
   # Names of the fields the form is allowed to submit. If a field that is
   # not here is part of the request, an error will be thrown.
   # allowedFields: ["name", "email", "url", "message"]
-  allowedFields: ["name", "email", 'parent', 'origin', 'slug', "message"]
+  allowedFields: ["name", "email", "url", "message", "url", "slug"]
   
   # (*) REQUIRED WHEN USING NOTIFICATIONS
   #
@@ -70,19 +70,19 @@ comments:
   # with Mailgun, which you can get for free at http://mailgun.com.
   # notifications:
     # Enable notifications
-   enabled: true
+   enabled: false
 
     # (!) ENCRYPTED
     #
     # Mailgun API key
     # apiKey: ""
-    apiKey: "AeFC7G/ke/NFnblVs/e8g7uXO0JPvC2YJoL2I3wXP8ECqDqVE0lwiisfbInbCo5vcKSUESVYVLjUAxquNsQdCdw3scQ3+OY7hIAhTTxUW7SKC66mvjM7fRfHI6H8hLBuG+9mO/PECwYTWfjTmEWGB1prug92nYqTsfPxc/tC77Y="
+    # apiKey: "AeFC7G/ke/NFnblVs/e8g7uXO0JPvC2YJoL2I3wXP8ECqDqVE0lwiisfbInbCo5vcKSUESVYVLjUAxquNsQdCdw3scQ3+OY7hIAhTTxUW7SKC66mvjM7fRfHI6H8hLBuG+9mO/PECwYTWfjTmEWGB1prug92nYqTsfPxc/tC77Y="
 
     # (!) ENCRYPTED
     #
     # Mailgun domain (encrypted)
     # domain: ""
-    domain: "fSWGZ1GIxHClAYeN88MGNj1ebk6dObNtTuwVruHlzKvRvmrWCwnjwBvsyaQankVu76/GSOg862wOXkId+hZAvFxiwT1AQctiI/k3217/8pe9OqVVDwu6Lc0eMd2bCtRSGlZgvDEMQPYtBlb3nPSlgX1NCPOR0fyIq6BAArL9OkU="
+    # domain: "fSWGZ1GIxHClAYeN88MGNj1ebk6dObNtTuwVruHlzKvRvmrWCwnjwBvsyaQankVu76/GSOg862wOXkId+hZAvFxiwT1AQctiI/k3217/8pe9OqVVDwu6Lc0eMd2bCtRSGlZgvDEMQPYtBlb3nPSlgX1NCPOR0fyIq6BAArL9OkU="
 
 
   # (*) REQUIRED
@@ -103,7 +103,8 @@ comments:
   # Register your domain at https://www.google.com/recaptcha/ and choose reCAPTCHA V2
   reCaptcha:
     enabled: false
-    siteKey: "6LdRBykTAAAAAFB46MnIu6ixuxwu9W1ihFF8G60Q"
+    siteKey: 
     # Encrypt reCaptcha secret key using Staticman /encrypt endpoint
     # For more information, https://staticman.net/docs/encryption
-    secret: "PznnZGu3P6eTHRPLORniSq+J61YEf+A9zmColXDM5icqF49gbunH51B8+h+i2IvewpuxtA9TFoK68TuhUp/X3YKmmqhXasegHYabY50fqF9nJh9npWNhvITdkQHeaOqnFXUIwxfiEeUt49Yoa2waRR7a5LdRAP3SVM8hz0KIBT4="
+    secret: 
+    
