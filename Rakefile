@@ -133,27 +133,9 @@ end
 # New Post
 ###################
 desc 'create a new draft post'
-task :post do
-  title = ENV['TITLE']
-  slug = "#{Date.today}-#{title.downcase.gsub(/[^\w]+/, '-')}"
-
-  file = File.join(
-    File.dirname(__FILE__),
-    '_posts',
-    slug + '.markdown'
-  )
-
-  File.open(file, "w") do |f|
-    f << <<-EOS.gsub(/^    /, '')
-    ---
-    title: #{title}
-    modified:
-    published: false
-    categories:
-    tags:
-    excerpt:
-    ---
-
-    EOS
-  end
+task :post, :title do |task, args|
+  
+  title = args[:title]
+  #puts "#{title}"
+  system "bundle exec jekyll post #{title} --layout single"
 end
