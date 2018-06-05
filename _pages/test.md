@@ -5,8 +5,9 @@ sitemap: false
 permalink: /test.html
 layout: single
 slug: testform
+comments: true
 ---
 
-# Test Page
+## Test Page
 
 
