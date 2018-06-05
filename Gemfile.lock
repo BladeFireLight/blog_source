@@ -104,6 +104,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-sitemap
   jemoji
+  nokogiri (~> 1.8.2)
 
 BUNDLED WITH
    1.16.2
