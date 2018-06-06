@@ -8,6 +8,8 @@ main:
     url: /windowsimagetools/
 #  - title: "PKI Tools"
  #   url: /pkitools/
+  - title: "XcomUtil"
+    url: /XcomUtil/
   - title: "Archive by Date"
     url: /year-archive/
   - title: "By Category"
