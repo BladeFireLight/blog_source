@@ -63,7 +63,7 @@ namespace :notify do
     begin
       require 'xmlrpc/client'
       puts "* Notifying Ping-O-Matic that the site has updated"
-      XMLRPC::Client.new('rpc.pingomatic.com', '/').call('weblogUpdates.extendedPing', 'blog.bladefirelight.com' , 'https://blog.bladefirelight.com', 'https://blog.bladefirelight.com/atom.xml')
+      XMLRPC::Client.new('rpc.pingomatic.com', '/').call('weblogUpdates.extendedPing', 'www.bladefirelight.com' , 'https://www.bladefirelight.com', 'https://www.bladefirelight.com/atom.xml')
     rescue LoadError
       puts "! Could not ping ping-o-matic, because XMLRPC::Client could not be found."
     end
@@ -75,7 +75,7 @@ namespace :notify do
       require 'net/http'
       require 'uri'
       puts "* Notifying Google that the site has updated"
-      Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('https://blog.bladefirelight.com/sitemap.xml'))
+      Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('https://www.bladefirelight.com/sitemap.xml'))
     rescue LoadError
       puts "! Could not ping Google about our sitemap, because Net::HTTP or URI could not be found."
     end
@@ -87,7 +87,7 @@ namespace :notify do
       require 'net/http'
       require 'uri'
       puts '* Notifying Bing that the site has updated'
-      Net::HTTP.get('www.bing.com', '/webmaster/ping.aspx?siteMap=' + URI.escape('https://blog.bladefirelight.com/sitemap.xml'))
+      Net::HTTP.get('www.bing.com', '/webmaster/ping.aspx?siteMap=' + URI.escape('https://www.bladefirelight.com/sitemap.xml'))
     rescue LoadError
       puts "! Could not ping Bing about our sitemap, because Net::HTTP or URI could not be found."
     end
