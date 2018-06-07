@@ -26,4 +26,5 @@ group :jekyll_plugins do
   gem "jemoji"
   gem 'jekyll-archives'
   gem 'jekyll-compose'
+  gem 'jekyll-algolia'
 end
