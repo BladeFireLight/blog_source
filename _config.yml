@@ -67,6 +67,8 @@ algolia:
   search_only_api_key    : b4603a9d806ac4befb326ce1731d101e # YOUR_SEARCH_ONLY_API_KEY
   powered_by             : false # true (default), false
   nodes_to_index         : 'p,blockquote,li'
+  files_to_exclude       :
+    - /style-guide/*
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
