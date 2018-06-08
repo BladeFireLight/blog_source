@@ -112,7 +112,7 @@ task :commit do
   puts "* Commit : Committing the contents of ./ "
   system 'git -C . commit -a -m "Automated Commit : Content Update"'
   puts "* Commit : Pushing commit of ./ to the GitHub"
-  system "git -C . push"
+  system "git -C . push origin"
 end
 
 # Usage: rake deploy, rake deploy:win
