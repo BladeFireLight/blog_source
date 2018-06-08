@@ -18,7 +18,7 @@ comments:
   # listed will be accepted. The origin is sent as part as the `options` object
   # (e.g. <input name="options[origin]" value="http://yourdomain.com/post1")
   # allowedOrigins: ["yourdomain.com"]
-  allowedOrigins: ["localhost", "blog.bladefirelight.com"]
+  allowedOrigins: ["localhost", "www.bladefirelight.com"]
 
   # (*) REQUIRED
   #
