@@ -170,3 +170,34 @@ You can also add the `.notice` class to a `<div>` element.
   <h4>Notice Headline:</h4>
   {{ notice-text | markdownify }}
 </div>
+
+## Code blocks
+
+{% highlight powershell linenos=table %}
+<#  highlitable code with line numbers useing liquid (not ability to wrap) #>
+get-help
+get-command
+this is the line that never ends. it goes on on on my freind, you would not belive it but it started verry small,b ut soon is was not so small at all. thisis the line that never ends...
+{% endhighlight %}
+
+
+```markdown
+{% raw %}{% highlight powershell linenos=table %}
+get-help
+get-command
+{% endhighlight %}{% endraw %}
+```
+~~~ powershell?line_numbers=true
+# Basic code block (vs Code and comment friendly)
+get-help
+get-command
+~~~
+
+```markdown
+~~~ powershell
+get-help
+get-command
+~~~
+```
+
+    test 3

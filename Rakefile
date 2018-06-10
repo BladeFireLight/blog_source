@@ -22,7 +22,7 @@ namespace :serve do
   desc "Regenerate files and drafts for development"
   task :drafts do
     puts "* Regenerating files and drafts for development..."
-    system "bundle exec jekyll serve --profile --drafts "
+    system "bundle exec jekyll serve --profile --drafts --livereload"
   end
 end
 
@@ -132,10 +132,18 @@ end
 ####################
 # New Post
 ###################
-desc 'create a new draft post'
+desc 'create a new post'
 task :post, :title do |task, args|
   
   title = args[:title]
   #puts "#{title}"
   system "bundle exec jekyll post #{title} --layout single"
+end
+
+desc 'create a new draft'
+task :post, :title do |task, args|
+  
+  title = args[:title]
+  #puts "#{title}"
+  system "bundle exec jekyll draft #{title} --layout single"
 end
